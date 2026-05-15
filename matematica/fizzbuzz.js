@@ -9,7 +9,7 @@ function FizzBuzz(int) {
         console.log("FizzBuzz")
         } else if (i % 3 === 0) {
         console.log("Fizz")
-        }else if (i % 7 === 0) {
+        } else if (i % 7 === 0) {
         console.log("Buzz")
         } else if (almost === true && !(i % 3 === 0 || i % 7 === 0)) {
         console.log("Almost Fizz")
