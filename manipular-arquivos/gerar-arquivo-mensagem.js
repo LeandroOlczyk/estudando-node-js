@@ -1,18 +1,23 @@
-const fs = require('fs');
-const path = require('path');
+import PromptSync from "prompt-sync";
+import fs from "fs";
+import path from "path";
+import { fileURLToPath } from "url";
 
-const nomeArquivo='mensagem.txt'
-const texto = 'Texto adicionado via Node.js';
+const prompt = PromptSync();
 
-const diretorio = path.join(__dirname, 'arquivos_gerados');
+const __filename = fileURLToPath(import.meta.url);
+const __dirname = path.dirname(__filename);
 
-console.log('__dirname:',__dirname)
-console.log('diretorio:',diretorio)
+const nomeArquivo = "mensagem.txt";
+console.log("\n---------- GRAVAÇÃO DE TEXTO ----------")
+console.log("\nEscreva seu texto:")
+let texto = prompt("-> ");
 
-const caminhoArquivo = path.join(diretorio,nomeArquivo);
+const diretorio = path.join(__dirname, "arquivos_gerados");
+const caminhoArquivo = path.join(diretorio, nomeArquivo);
 
 fs.mkdirSync(diretorio, { recursive: true });
 
-fs.writeFileSync(caminhoArquivo, texto, 'utf8');
+fs.writeFileSync(caminhoArquivo, texto, "utf8");
 
-console.log(`✅ Arquivo criado com sucesso em: ${caminhoArquivo}`);
+console.log(`\n✅ Arquivo criado com sucesso em: \n${caminhoArquivo} \n`);
