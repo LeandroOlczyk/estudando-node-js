@@ -69,3 +69,11 @@ console.log(mySet); // Set(5) { 1, 2, 3, 4, 5 }
 mySet.add(1); // Já existe, o Set permanece inalterado
 console.log(mySet); // Set(5) { 1, 2, 3, 4, 5 }
 
+
+// ================ DELETANDO ELEMENTOS ================
+//Para remover um elemento de um Set, use o método delete():
+//Se o elemento não existir no Set, ele permanece inalterado e o delete() retorna false.
+
+console.log(mySet.delete(2)); // true (o elemento existia e foi removido)
+console.log(mySet.delete(10)); // false (o elemento não existia)
+
