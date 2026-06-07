@@ -77,3 +77,29 @@ console.log(mySet); // Set(5) { 1, 2, 3, 4, 5 }
 console.log(mySet.delete(2)); // true (o elemento existia e foi removido)
 console.log(mySet.delete(10)); // false (o elemento não existia)
 
+
+// ========== VERIFICANDO SE UM ELEMENTO EXITE ==========
+// Para verificar se um elemento existe em um Set, use o método has(). 
+// Este método retorna true se o elemento estiver no Set, e false caso contrário.
+
+mySet = new Set([1, 2, 3, 4, 5]);
+
+console.log(mySet.has(3)); // true
+console.log(mySet.has(6)); // false
+
+// O método has() é útil para operações condicionais:
+
+if (mySet.has(3)) {
+  console.log("3 is in the set");
+} else {
+  console.log("3 is not in the set");
+}
+
+// Sets usam igualdade estrita (===) para comparações:
+
+const mixedSet = new Set([1, '2', 3]);
+
+console.log(mixedSet.has('1')); // false
+console.log(mixedSet.has(2));  // false
+console.log(mixedSet.has('2')); // true
+
