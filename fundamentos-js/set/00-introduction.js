@@ -164,6 +164,63 @@ for (let element of set1) {
   }
 }
 
+// ============== Matemática - Diferença de Conjuntos ============== 
+/*
+A diferença de dois conjuntos A e B (A - B) cria um novo conjunto contendo elementos que estão em A, mas não em B. 
+Esta operação não é comutativa (A - B ≠ B - A).
+Para encontrar a diferença entre conjuntos, converta arrays em conjuntos e use operações de conjunto para 
+encontrar elementos no primeiro conjunto que não estão no segundo. 
+Por exemplo:
+*/
+
+const setA = new Set([1, 2, 3, 4, 5]);
+const setB = new Set([3, 4, 5, 6, 7]);
+
+// A - B: elementos em A, mas não em B
+const differenceAB = new Set([...setA].filter(x => !setB.has(x)));
+console.log('A - B:', differenceAB); // Set { 1, 2 }
+
+// B - A: elementos em B, mas não em A
+const differenceBA = new Set([...setB].filter(x => !setA.has(x)));
+console.log('B - A:', differenceBA); // Set { 6, 7 }
 
 
+// ============ Matemática - Diferença Simétrica ============
+// A diferença simétrica de dois conjuntos contém elementos que estão em qualquer um dos conjuntos, mas não em ambos. 
+// É a união de A - B e B - A. Por exemplo:
+
+// Converter arrays para conjuntos
+const set1 = new Set(arr1);
+const set2 = new Set(arr2);
+
+// Criar a diferença simétrica
+const symmetricDiff = new Set([
+  ...set1.difference(set2),
+  ...set2.difference(set1)
+]);
+
+// Converter de volta para array
+const result = Array.from(symmetricDiff);
+
+
+// ========== Matemática - Subconjuntos e Superconjuntos ==========
+
+// Um conjunto A é um subconjunto do conjunto B se cada elemento de A também for um elemento de B. 
+// Inversamente, B é um superconjunto de A se contiver todos os elementos de A. 
+// Dois conjuntos são iguais se contiverem exatamente os mesmos elementos.
+
+// Verifique se setA é um subconjunto de setB:
+function isSubset(setA, setB) {
+  return [...setA].every(element => setB.has(element));
+}
+
+// Verifique se setA é um superconjunto de setB:
+function isSuperset(setA, setB) {
+  return isSubset(setB, setA);
+}
+
+// Verifique se dois conjuntos são iguais:
+function areEqual(setA, setB) {
+  return setA.size === setB.size && isSubset(setA, setB);
+}
 
