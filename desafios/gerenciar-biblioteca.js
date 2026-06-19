@@ -90,6 +90,29 @@ function manageLibrary(actions, data) {
                 results.push(searchGender);
                 break
 
+            case 'markAsRead':
+                const bookToRead = libraryData.books.find(book => book.id === currentData.bookId);
+
+                if (!bookToRead) {
+                    results.push("Book not found!");
+                    break;
+                }
+
+                if (
+                    typeof currentData.rating !== "number" ||
+                    currentData.rating < 1 ||
+                    currentData.rating > 5
+                ) {
+                    results.push("Invalid rating! Please rate between 1 and 5");
+                    break;
+                }
+
+                bookToRead.isRead = true;
+                bookToRead.rating = currentData.rating;
+
+                results.push("Book marked as read!");
+                break;
+
             default:
                 results.push("Invalid action!");
                 break
@@ -100,45 +123,17 @@ function manageLibrary(actions, data) {
 
 let actions, data, result
 
-actions = ["addBook", "addBook", "addBook", "filterByGenre", "printBooks"]
-data = [{ title: "Dune", author: "Frank Herbert", year: 1965, genre: "Science Fiction" }, { title: "Pride and Prejudice", author: "Jane Austen", year: 1813, genre: "Romance" }, { title: "Foundation", author: "Isaac Asimov", year: 1951, genre: "Science Fiction" }, "Science Fiction", null]
-
+actions = ["addBook", "markAsRead", "printBooks"];
+data = [{ title: "Harry Potter", author: "J.K. Rowling", year: 1997, genre: "Fantasy" }, { bookId: 2, rating: 4 }, null];
 
 result = manageLibrary(actions, data);
 console.log(result);
 
 /*
-
+RESULTADO ESPERADO:
 [
   "Book added successfully!",
-  "Book added successfully!",
-  "Book added successfully!",
-  [
-    {
-      id: 2,
-      title: "Dune",
-      author: "Frank Herbert",
-      year: 1965,
-      genre: "Science Fiction",
-      isRead: false,
-      rating: 0,
-      borrowed: false,
-      borrowedBy: "",
-      borrowDate: ""
-    },
-    {
-      id: 4,
-      title: "Foundation",
-      author: "Isaac Asimov",
-      year: 1951,
-      genre: "Science Fiction",
-      isRead: false,
-      rating: 0,
-      borrowed: false,
-      borrowedBy: "",
-      borrowDate: ""
-    }
-  ],
+  "Book marked as read!",
   [
     {
       id: 1,
@@ -154,42 +149,16 @@ console.log(result);
     },
     {
       id: 2,
-      title: "Dune",
-      author: "Frank Herbert",
-      year: 1965,
-      genre: "Science Fiction",
-      isRead: false,
-      rating: 0,
-      borrowed: false,
-      borrowedBy: "",
-      borrowDate: ""
-    },
-    {
-      id: 3,
-      title: "Pride and Prejudice",
-      author: "Jane Austen",
-      year: 1813,
-      genre: "Romance",
-      isRead: false,
-      rating: 0,
-      borrowed: false,
-      borrowedBy: "",
-      borrowDate: ""
-    },
-    {
-      id: 4,
-      title: "Foundation",
-      author: "Isaac Asimov",
-      year: 1951,
-      genre: "Science Fiction",
-      isRead: false,
-      rating: 0,
+      title: "Harry Potter",
+      author: "J.K. Rowling",
+      year: 1997,
+      genre: "Fantasy",
+      isRead: true,
+      rating: 4,
       borrowed: false,
       borrowedBy: "",
       borrowDate: ""
     }
   ]
 ]
-
-
 */
