@@ -40,3 +40,13 @@ console.log('----------------------')
 console.log(`Array Original: ${array}`)
 console.log(`Array Convertido: ${resultado}`);
 console.log('----------------------')
+
+/*
+Quais parâmetros o callback map() recebe? 
+currentValue, index, array
+
+Arrow functions fornecem uma sintaxe mais curta para callbacks, como arr.map(num => num * 2).
+
+
+
+*/
