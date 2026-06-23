@@ -5,6 +5,8 @@ O método reduce() reduz um array a um único valor, executando uma função par
         // retorna o valor atualizado do acumulador
     }, initialValue);
 
+    "currentIndex, array" são parâmetros que fornecem contexto adicional, mas não são necessários para a maioria das operações de reduce.
+
  Componentes Principais:
     accumulator: Acumula os valores de retorno do callback (total acumulado)
     currentValue: O elemento atual sendo processado
@@ -13,15 +15,17 @@ O método reduce() reduz um array a um único valor, executando uma função par
     initialValue: (opcional) Valor inicial para o acumulador
 */
 
+let numbers, sum
+
 // Exemplo - soma de números:
-const numbers = [1, 2, 3, 4, 5];
-const sum = numbers.reduce((acc, curr) => acc + curr, 0);
+numbers = [1, 2, 3, 4, 5];
+sum = numbers.reduce((acc, curr) => acc + curr, 0);
 console.log(sum); // 15
 
 // Execução passo a passo:
 
-const numbers = [1, 2, 3, 4];
-const sum = numbers.reduce((acc, curr) => {
+numbers = [1, 2, 3, 4];
+sum = numbers.reduce((acc, curr) => {
     console.log(`Accumulator: ${acc}, Current Value: ${curr}`);
     return acc + curr;
 }, 0);
@@ -32,3 +36,9 @@ const sum = numbers.reduce((acc, curr) => {
 // Accumulator: 3, Current Value: 3
 // Accumulator: 6, Current Value: 4
 // Resultado final: 10
+
+console.log('---------- Maior Numero ----------')
+const nums = [3, 7, 2, 9, 4];
+const max = nums.reduce((acc, curr) => curr > acc ? curr : acc);
+console.log('O maior numero do array é: ', max)
+console.log('----------------------------------')
