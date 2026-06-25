@@ -48,6 +48,33 @@ function manageFestival(actions, data) {
                 results.push(festivalData.screenings)
                 break
 
+            case "addMovie":
+                let newMovie = {
+                    id: festivalData.movies.length + 1,
+                    title: currentData.title,
+                    director: currentData.director,
+                    year: currentData.year,
+                    mainGenre: currentData.mainGenre,
+                    secondGenre: currentData.secondGenre,
+                    avgRating: 0,
+                    available: true
+                };
+
+                festivalData.movies.push(newMovie);
+                results.push("Movie added successfully!");
+                break
+
+            case "addVenue":
+                let newVanue = {
+                    id: festivalData.venues.length + 1,
+                    name: currentData.name,
+                    capacity: Number(currentData.capacity),
+                };
+
+                festivalData.venues.push(newVanue);
+                results.push("Venue added successfully!");
+                break
+
             default:
                 results.push("Invalid action!");
                 break
@@ -57,7 +84,7 @@ function manageFestival(actions, data) {
     return results;
 }
 
-let actions = ["listVenues", "listMovies"]
-let data = [{}, {}]
+let actions = ["addVenue", "listVenues"]
+let data = [{ name: "IMAX Theater", capacity: 300 }, {}]
 let result = manageFestival(actions, data)
 console.log(result)
